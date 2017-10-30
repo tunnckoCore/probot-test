@@ -75,7 +75,7 @@ workflows:
             tags:
               only: /v.*/
             branches:
-              only: master
+              ignore: master
           requires:
             - test
       - publish:
@@ -83,7 +83,7 @@ workflows:
             tags:
               only: /v.*/
             branches:
-              only: master
+              ignore: master
           requires:
             - build
           context: org-global
