@@ -1,0 +1,89 @@
+version: 2
+
+defaults: &defaults
+  working_directory: ~/probot-test
+  docker:
+    - image: circleci/node:8
+
+restore_modules_cache: &restore_modules_cache
+  restore_cache:
+    keys:
+    - probot-test-{{ checksum "yarn.lock" }}
+    # fallback to using the latest cache if no exact match is found
+    - probot-test-
+
+
+jobs:
+  install:
+    <<: *defaults
+    steps:
+      - checkout
+      - *restore_modules_cache
+      - run:
+          name: Installing Dependencies
+          command: yarn install
+      - save_cache:
+          key: probot-test-{{ checksum "yarn.lock" }}
+          paths: node_modules
+      - run:
+          name: Remove node_modules to cleanup workspace
+          command: rm -rf node_modules
+
+  test:
+    <<: *defaults
+    steps:
+      - checkout
+      - *restore_modules_cache
+      - run:
+          name: Running tests and checks
+          command: yarn test
+      - run:
+          name: Sending test coverage to CodeCov
+          command: bash <(curl -s https://codecov.io/bash)
+
+  build:
+    <<: *defaults
+    steps:
+      - checkout
+      - *restore_modules_cache
+      - run:
+          name: Creating distributable files
+          command: echo ok
+      - store_artifacts:
+          path: dist
+          destination: probot-test
+
+  publish:
+    <<: *defaults
+    steps:
+      - checkout
+      - *restore_modules_cache
+      - run:
+          name: Trying to deploy
+          command: yarn start release
+
+workflows:
+  version: 2
+  automated:
+    jobs:
+      - install
+      - test:
+          requires:
+            - install
+      - build:
+          filters:
+            tags:
+              only: /v.*/
+            branches:
+              only: master
+          requires:
+            - test
+      - publish:
+          filters:
+            tags:
+              only: /v.*/
+            branches:
+              only: master
+          requires:
+            - build
+          context: org-global

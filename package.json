@@ -1,0 +1,23 @@
+{
+  "name": "probot-test",
+  "version": "0.1.0",
+  "description": "nah test",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo ok && exit 0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/olstenlarck/probot-test.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/olstenlarck/probot-test/issues"
+  },
+  "homepage": "https://github.com/olstenlarck/probot-test#readme",
+  "dependencies": {
+    "pify": "3.0.0"
+  }
+}
