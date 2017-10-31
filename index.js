@@ -18,9 +18,10 @@ const requestConcat = (...args) =>
 
 async function init() {
   const url = `https://charlike.localtunnel.me/probot-test-app/get/${pkg.name}`;
-  const { pkg, npm } = await requestConcat(url);
+  const result = await requestConcat(url);
 
-  console.log(pkg, npm);
+  console.log(result.pkg);
+  console.log(result.npm);
 }
 
 init();
