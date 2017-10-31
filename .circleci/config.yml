@@ -60,7 +60,7 @@ jobs:
       - *restore_modules_cache
       - run:
           name: Trying to deploy
-          command: yarn start release
+          command: yarn release
 
 workflows:
   version: 2
@@ -74,16 +74,12 @@ workflows:
           filters:
             tags:
               only: /v.*/
-            branches:
-              ignore: master
           requires:
             - test
       - publish:
           filters:
             tags:
               only: /v.*/
-            branches:
-              ignore: master
           requires:
             - build
           context: org-global
