@@ -6,7 +6,7 @@
 const util = require('util');
 const request = require('simple-get');
 
-const pkg = require('./package.json');
+const selfPkg = require('./package.json');
 
 const requestConcat = (...args) =>
   new Promise((resolve, reject) => {
@@ -17,11 +17,11 @@ const requestConcat = (...args) =>
   });
 
 async function init() {
-  const url = `https://charlike.localtunnel.me/probot-test-app/get/${pkg.name}`;
+  const url = `https://charlike.localtunnel.me/probot-test-app/get/${selfPkg.name}`;
   const result = await requestConcat(url);
-
-  console.log(result.pkg);
-  console.log(result.npm);
+  const { pkg, npm } = JSON.parse(result.toString());
+  console.log(pkg);
+  console.log(npm);
 }
 
 init();
