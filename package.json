@@ -1,10 +1,11 @@
 {
   "name": "probot-test",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "nah test",
   "main": "index.js",
   "scripts": {
-    "test": "node index.js"
+    "test": "node index.js",
+    "release": "echo ok"
   },
   "repository": {
     "type": "git",
