@@ -1,6 +1,6 @@
 {
   "name": "probot-test",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "description": "nah test",
   "main": "index.js",
   "scripts": {
