@@ -74,12 +74,16 @@ workflows:
           filters:
             tags:
               only: /v.*/
+            branches:
+              ignore: master
           requires:
             - test
       - publish:
           filters:
             tags:
               only: /v.*/
+            branches:
+              ignore: master
           requires:
             - build
           context: org-global
