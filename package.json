@@ -1,25 +1,73 @@
 {
   "name": "probot-test",
-  "version": "0.2.4",
-  "description": "nah test",
-  "main": "index.js",
+  "version": "0.0.0-just-a-placeholder",
+  "description": "foo bar baz qux, zazzy barry buddah, testing repo for semantic-release-app",
+  "repository": "olstenlarck/probot-test",
+  "author": "Charlike Mike Reagent (https://i.am.charlike.online)",
+  "nspId": "12907c4a-78a2-41d7-a430-49396e68b9cd",
+  "main": "./src/index.js",
   "scripts": {
-    "test": "node index.js",
-    "release": "echo ok"
+    "test": "NODE_ENV=test yarn hela test",
+    "precommit": "yarn hela precommit",
+    "commit": "yarn hela commit"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/olstenlarck/probot-test.git"
+  "license": "Apache-2.0",
+  "licenseStart": 2017,
+  "engines": {
+    "node": ">=8",
+    "npm": ">=5",
+    "yarn": ">=1"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/olstenlarck/probot-test/issues"
+  "files": [
+    "src/"
+  ],
+  "bin": {
+    "new-release": "./src/cli.js"
   },
-  "homepage": "https://github.com/olstenlarck/probot-test#readme",
   "dependencies": {
-    "pify": "3.0.0",
-    "simple-get": "2.7.0"
+    "detect-next-version": "1.1.3",
+    "execa-pro": "1.0.2",
+    "get-pkg": "0.3.0",
+    "parse-git-log": "0.2.1",
+    "semver": "5.4.1"
+  },
+  "devDependencies": {
+    "eslint": "4.11.0",
+    "eslint-config-tunnckocore": "0.2.0",
+    "hela": "1.3.14",
+    "hela-config-tunnckocore": "2.1.2",
+    "mukla": "0.4.9"
+  },
+  "keywords": [
+    "automation"
+  ],
+  "verb": {
+    "run": true,
+    "toc": {
+      "render": true,
+      "method": "preWrite",
+      "maxdepth": 3
+    },
+    "layout": "empty",
+    "tasks": [
+      "readme"
+    ],
+    "related": {
+      "list": [
+        "dush",
+        "p-map-series",
+        "execa",
+        "hela",
+        "mri"
+      ],
+      "highlight": "execa"
+    },
+    "lint": {
+      "reflinks": true
+    },
+    "reflinks": [
+      "hela",
+      "semantic-release"
+    ]
   }
 }
