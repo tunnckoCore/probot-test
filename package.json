@@ -1,6 +1,6 @@
 {
   "name": "probot-test",
-  "version": "0.0.0-just-a-placeholder",
+  "version": "1.2.0",
   "description": "foo bar baz qux, zazzy barry buddah, testing repo for semantic-release-app",
   "repository": "olstenlarck/probot-test",
   "author": "Charlike Mike Reagent (https://i.am.charlike.online)",
